@@ -2,12 +2,12 @@
 
 cd build/
 
-docker build -t aguamala/centos:${BUILD_NUMBER} .
+docker build -t aguamala/centos:7-${BUILD_NUMBER} .
 
-DESTINATION=aguamala/centos:${BUILD_NUMBER}
-LATEST_DESTINATION=aguamala/centos:master
+DESTINATION=aguamala/centos:7-${BUILD_NUMBER}
+LATEST_DESTINATION=aguamala/centos:7
 
-docker tag aguamala/centos:${BUILD_NUMBER} ${DESTINATION}
+docker tag aguamala/centos:7-${BUILD_NUMBER} ${DESTINATION}
 docker push ${DESTINATION}
-docker tag -f aguamala/centos:${BUILD_NUMBER} ${LATEST_DESTINATION}
+docker tag -f aguamala/centos:7-${BUILD_NUMBER} ${LATEST_DESTINATION}
 docker push ${LATEST_DESTINATION}
