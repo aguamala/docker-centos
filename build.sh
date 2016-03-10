@@ -1,13 +1,15 @@
 #!/usr/bin/env sh
 
-cd build/
+CENTOS_VERSION=7
 
-docker build -t aguamala/centos:7-${BUILD_NUMBER} .
+cd build-7/
 
-DESTINATION=aguamala/centos:7-${BUILD_NUMBER}
-LATEST_DESTINATION=aguamala/centos:7
+docker build -t aguamala/centos:${CENTOS_VERSION} .
 
-docker tag aguamala/centos:7-${BUILD_NUMBER} ${DESTINATION}
+DESTINATION=aguamala/centos:${CENTOS_VERSION}
+LATEST_DESTINATION=aguamala/centos:latest
+
+docker tag aguamala/centos:${CENTOS_VERSION} ${DESTINATION}
 docker push ${DESTINATION}
-docker tag -f aguamala/centos:7-${BUILD_NUMBER} ${LATEST_DESTINATION}
+docker tag -f aguamala/centos:${CENTOS_VERSION} ${LATEST_DESTINATION}
 docker push ${LATEST_DESTINATION}
